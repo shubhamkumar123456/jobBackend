@@ -62,7 +62,7 @@ const loginUser = async (req, res) => {
         if (findUser) {
             let comparePassword = bcrypt.compareSync(password, findUser.password)
             if (comparePassword) {
-                let token = jwt.sign({ _id: findUser._id, role: findUser.role }, process.env.JWT_Secret,{expiresIn:'24h'})
+                let token = jwt.sign({ _id: findUser._id, role: findUser.role }, process.env.JWT_SECRET,{expiresIn:'24h'})
                 res.json({ msg: "login successfull", success: true, token: token, role:findUser.role, tokenExpires:'24h' })
             }
             else {
